@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Une Surprise t'Attend ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #8b4789 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 700px;
+            width: 100%;
+            padding: 50px 40px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #c44569;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .email-box {
+            background: #fff5f7;
+            border-left: 4px solid #ff6b9d;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .email-box p {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .highlight {
+            color: #c44569;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .password-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .password-section h2 {
+            color: #8b4789;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 300px;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid #ff6b9d;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #c44569;
+            box-shadow: 0 0 10px rgba(255, 107, 157, 0.3);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(196, 69, 105, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 69, 105, 0.6);
+        }
+
+        .btn-hint {
+            background: linear-gradient(135deg, #8b4789, #6b3569);
+            font-size: 0.9em;
+            padding: 10px 25px;
+        }
+
+        .hint-text {
+            display: none;
+            background: #fff9e6;
+            border: 2px dashed #ffb347;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            color: #8b4789;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+
+        .hint-text.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .error-message {
+            color: #ff4757;
+            margin-top: 15px;
+            font-size: 1em;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            .email-box {
+                font-size: 1em;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Une Surprise t'Attend ✨</h1>
+        
+        <p style="text-align: center; color: #666; font-size: 1.1em; margin-bottom: 30px;">
+            Tu te souviens de ce message ? Il cache quelque chose de spécial...
+        </p>
+
+        <div class="email-box">
+            <p><span class="highlight">D</span>epuis que je te connais, chaque jour est une aventure.</p>
+            <p>Souvent <span class="highlight">I</span>maginer notre futur me fait sourire.</p>
+            <p><span class="highlight">S</span>ouviens-toi de tous nos moments magiques ensemble.</p>
+            <p>Aujourd'hui, je veux que tu découvres quelque chose de spécial, <span class="highlight">N</span>otre prochaine aventure approche.</p>
+            <p><span class="highlight">E</span>nfin, je peux te dire que j'ai préparé une surprise unique.</p>
+            <p>Tu me dis toujours que <span class="highlight">Y</span> a rien de mieux que les surprises que je te fais.</p>
+        </div>
+
+        <div class="password-section">
+            <h2>Saisis le mot de passe pour révéler ton cadeau 🎁</h2>
+            
+            <input type="text" id="passwordInput" placeholder="Mot de passe...">
+            
+            <br>
+            
+            <button class="btn" onclick="checkPassword()">Révéler mon Cadeau</button>
+            <br>
+            <button class="btn btn-hint" onclick="showHint()">💡 Besoin d'un indice ?</button>
+            
+            <div class="hint-text" id="hintBox">
+                "La magie commence par les petits détails... comme les premières lettres" ✨
+            </div>
+            
+            <p class="error-message" id="errorMsg">
+                Pas encore... Regarde bien les indices 🔍
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showHint() {
+            document.getElementById('hintBox').classList.add('show');
+        }
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value.trim().toUpperCase();
+            const errorMsg = document.getElementById('errorMsg');
+            
+            if (input === 'DISNEY') {
+                // Redirection vers la page de révélation
+                window.location.href = 'reveal.html';
+            } else {
+                errorMsg.classList.add('show');
+                setTimeout(() => {
+                    errorMsg.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Permettre la validation avec la touche Entrée
+        document.getElementById('passwordInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
