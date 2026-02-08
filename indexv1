@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Miel pour Honey 🐻🍯</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Georgia, serif; 
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #8b4789 100%);
+            min-height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .container { 
+            background: white; 
+            border-radius: 20px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); 
+            max-width: 800px; 
+            width: 100%; 
+            padding: 60px 40px; 
+            text-align: center; 
+            animation: fadeIn 1s ease-in;
+            position: relative;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        h1 { color: #c44569; font-size: 2.8em; margin-bottom: 20px; animation: bounce 1s ease-in-out; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .honey-subtitle { color: #8b4789; font-size: 1.4em; margin-bottom: 20px; font-style: italic; }
+        .honey-text { 
+            background: #fff5f7; 
+            border-radius: 15px; 
+            padding: 25px; 
+            margin: 20px 0; 
+            line-height: 1.6; 
+            font-size: 1.1em; 
+            color: #333; 
+            border-left: 5px solid #ffb347; 
+        }
+        .honey-jar { font-size: 4em; margin: 20px 0; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .progress-bar { 
+            background: #fff5f7; 
+            height: 10px; 
+            border-radius: 5px; 
+            margin: 20px 0; 
+            overflow: hidden; 
+        }
+        .progress-fill { 
+            background: linear-gradient(90deg, #ffb347, #ff6b9d); 
+            height: 100%; 
+            width: 0%; 
+            transition: width 0.5s; 
+        }
+        .section { display: none; }
+        .section.active { display: block; }
+        /* Styles énigme (de index-2) */
+        .email-box { 
+            background: #fff5f7; 
+            border-left: 4px solid #ff6b9d; 
+            padding: 25px; 
+            margin: 30px 0; 
+            border-radius: 10px; 
+            line-height: 1.8; 
+            font-size: 1.1em; 
+        }
+        .highlight { color: #c44569; font-weight: bold; font-size: 1.3em; }
+        input[type="text"] { 
+            width: 100%; 
+            max-width: 300px; 
+            padding: 15px; 
+            font-size: 1.1em; 
+            border: 2px solid #ff6b9d; 
+            border-radius: 10px; 
+            text-align: center; 
+            margin: 20px 0; 
+            transition: all 0.3s; 
+        }
+        input[type="text"]:focus { outline: none; border-color: #c44569; box-shadow: 0 0 10px rgba(255,107,157,0.3); }
+        .btn { 
+            background: linear-gradient(135deg, #ff6b9d, #c44569); 
+            color: white; 
+            border: none; 
+            padding: 15px 40px; 
+            font-size: 1.1em; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            margin: 10px; 
+            transition: all 0.3s; 
+            box-shadow: 0 4px 15px rgba(196,69,105,0.4); 
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(196,69,105,0.6); }
+        .btn-hint { background: linear-gradient(135deg, #8b4789, #6b3569); }
+        .hint-text, .error-message { 
+            display: none; 
+            background: #fff9e6; 
+            border: 2px dashed #ffb347; 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 10px; 
+            color: #8b4789; 
+            font-style: italic; 
+            font-size: 1.1em; 
+        }
+        .hint-text.show, .error-message.show { display: block; animation: fadeIn 0.5s; }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
+        /* Styles révélation (de reveal) */
+        .reveal-message { background: #fff5f7; border-radius: 15px; padding: 30px; margin: 30px 0; line-height: 1.8; font-size: 1.2em; color: #333; border-left: 5px solid #ff6b9d; }
+        .castle { font-size: 5em; margin: 20px 0; animation: float 3s ease-in-out infinite; }
+        .hearts { color: #ff6b9d; font-size: 2em; margin: 20px 0; animation: bounce 1s infinite; }
+        .confetti { position: fixed; width: 10px; height: 10px; background: #ff6b9d; position: absolute; animation: fall 3s linear infinite; z-index: 1000; }
+        @keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }
+        @media (max-width: 600px) { .container { padding: 40px 25px; } h1 { font-size: 2em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Section 1: Intro Winnie/Honey -->
+        <div id="intro-section" class="section active">
+            <h1>Mission Miel pour Honey 🐻🍯</h1>
+            <p class="honey-subtitle">Quelqu’un que j’aime très fort a une immense envie de miel et d’aventure…</p>
+            <div class="honey-jar">🍯</div>
+            <div class="honey-text">
+                <p>Dans une certaine forêt très très lointaine, un petit ours réfléchit en se grattant la tête.</p>
+                <p>Il se disait que la seule chose meilleure qu’un pot de miel… c’est une aventure entière remplie de moments aussi doux que le miel.</p>
+                <p>Alors il a préparé une quête spéciale pour sa <strong>Honey</strong> préférée.</p>
+                <p>Si tu acceptes, chaque étape te rapprochera d’un endroit où la magie, les lumières et les histoires prennent vie.</p>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+            <button class="btn" onclick="nextSection('enigme-section')">Suivre la piste du miel</button>
+        </div>
+
+        <!-- Section 2: Énigme (de index-2) -->
+        <div id="enigme-section" class="section">
+            <h1>Étape 1 : L'indice caché</h1>
+            <p style="text-align: center; color: #666; font-size: 1.1em; margin-bottom: 30px;">
+                Tu te souviens de ce message ? Il cache quelque chose de spécial...
+            </p>
+            <div class="email-box">
+                <p style="margin-bottom: 15px;"><strong>Coucou Kelyne,</strong></p>
+                <p>J'ai bien relu ton CV, c'est vraiment du bon boulot. Voici mes quelques remarques</p>
+                <p><span class="highlight">S</span>urtout, garde bien cette présentation, elle est très pro et très lisible.</p>
+                <p><span class="highlight">I</span>l faut que tu saches que ton expérience en stage ressort vraiment bien.</p>
+                <p><span class="highlight">D</span>ailleurs, j'ai vérifié les dates et tout semble parfaitement cohérent.</p>
+                <p><span class="highlight">N</span>'hésite pas l'envoyer dès demain matin pour le poste en nonat.</p>
+                <p><span class="highlight">E</span>span l’état, je pense que tu as toutes tes chances pour décrocher l’entretien.</p>
+                <p><span class="highlight">Y</span> a pas de doute, ton profil correspond pile ce qu'ils recherchent.</p>
+                <p style="margin-top: 15px;">Tiens-moi au courant dès que tu as un retour !</p>
+                <em>Je t'embrasse,</em>
+            </div>
+            <div class="password-section">
+                <h2>Saisis le mot de passe pour révéler ton cadeau</h2>
+                <input type="text" id="passwordInput" placeholder="Mot de passe...">
+                <br>
+                <button class="btn" onclick="checkPassword()">Révéler mon Cadeau</button>
+                <br>
+                <button class="btn btn-hint" onclick="showHint()">Besoin d'un indice ?</button>
+                <div class="hint-text" id="hintBox">La magie commence par les premières lettres...</div>
+                <p class="error-message" id="errorMsg">Pas encore... Regarde bien les indices</p>
+            </div>
+        </div>
+
+        <!-- Section 3: Révélation (de reveal) -->
+        <div id="reveal-section" class="section">
+            <h1>Surprise ! 🎉</h1>
+            <div class="subtitle">Direction Disneyland Paris ! ✨</div>
+            <div class="castle">🏰</div>
+            <div class="reveal-message">
+                <p>Tu te souviens quand tu m'as dit <strong>"Un jour tu m'emmènera Disney ?"</strong><br><br>
+                Et bien ce jour arrive !</p>
+                <p>Je t'offre <strong>deux billets pour Disneyland Paris</strong> pour qu'on vive cette magie ensemble.<br><br>
+                Les vrais billets t'attendent le <strong>13 février</strong><br>
+                Les dates sont libres, on choisira notre aventure ensemble !</p>
+            </div>
+            <div class="hearts">💖💖💖</div>
+            <a href="billets-disney.pdf" download class="btn">Télécharger mes Billets</a>
+            <p style="margin-top: 30px; color: #666; font-style: italic;">Prépare-toi à vivre un moment magique !</p>
+        </div>
+    </div>
+
+    <script>
+        let currentSection = 1;
+        function nextSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            currentSection++;
+            document.getElementById('progress-fill').style.width = (currentSection / 3 * 100) + '%';
+        }
+
+        function showHint() {
+            document.getElementById('hintBox').classList.add('show');
+        }
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value.trim().toUpperCase();
+            const errorMsg = document.getElementById('errorMsg');
+            if (input === 'DISNEY') {
+                nextSection('reveal-section');
+                createConfetti();
+            } else {
+                errorMsg.classList.add('show');
+                setTimeout(() => errorMsg.classList.remove('show'), 3000);
+            }
+        }
+
+        document.getElementById('passwordInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') checkPassword();
+        });
+
+        function createConfetti() {
+            const colors = ['#ff6b9d', '#c44569', '#8b4789', '#ffb347', '#ffd700'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+    </script>
+</body>
+</html>
