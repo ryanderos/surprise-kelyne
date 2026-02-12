@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Une Aventure Magique pour Honey ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --romantic-pink: #E4007C;
+            --romantic-purple: #6D2077;
+            --romantic-gold: #FFB81C;
+            --deep-purple: #4A1942;
+            --disney-blue: #0060A8;
+            --disney-pink: #E4007C;
+            --disney-purple: #6D2077;
+            --disney-gold: #FFB81C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--romantic-purple) 0%, var(--deep-purple) 50%, #1a0a1a 100%);
+            padding: 2rem 1rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(228, 0, 124, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 600px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 10vw, 4rem);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(120deg, #fff, var(--romantic-gold), #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            opacity: 0.95;
+            line-height: 1.8;
+            padding: 0 1rem;
+        }
+
+        .emoji-float {
+            font-size: 4rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            margin: 2rem 0;
+        }
+
+        /* ============ ÉNIGME SECTION ============ */
+        .enigme-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #1a0a1a 0%, #2d1b3d 50%, #1a1a2e 100%);
+            position: relative;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .email-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            border-radius: 25px;
+            padding: 2rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .email-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .email-header h2 {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(120deg, var(--romantic-pink), var(--romantic-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .email-header p {
+            font-size: clamp(0.95rem, 3vw, 1.1rem);
+            opacity: 0.9;
+        }
+
+        .email-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--romantic-pink);
+            padding: 1.5rem;
+            border-radius: 20px;
+            line-height: 1.8;
+            font-size: clamp(0.95rem, 3vw, 1.05rem);
+            margin: 1.5rem 0;
+        }
+
+        .email-box p {
+            margin-bottom: 0.6rem;
+        }
+
+        .highlight {
+            color: var(--romantic-gold);
+            font-weight: 700;
+            font-size: 1.4em;
+            text-shadow: 0 0 20px rgba(255, 184, 28, 0.6);
+            display: inline-block;
+        }
+
+        .password-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .password-container h3 {
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .input-wrapper {
+            max-width: 100%;
+            margin: 0 auto 1.5rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--romantic-pink);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(228, 0, 124, 0.3);
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Raleway', sans-serif;
+            margin: 0.5rem;
+            width: calc(100% - 1rem);
+            max-width: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--romantic-pink), var(--romantic-purple));
+            color: white;
+            box-shadow: 0 10px 30px rgba(228, 0, 124, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(228, 0, 124, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hint-box {
+            background: rgba(255, 184, 28, 0.1);
+            border: 2px dashed var(--romantic-gold);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .hint-box.show {
+            opacity: 1;
+            max-height: 200px;
+        }
+
+        .error-message {
+            color: var(--romantic-pink);
+            font-weight: 600;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        /* ============ REVEAL SECTION ============ */
+        .reveal-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, var(--disney-blue) 0%, var(--disney-purple) 50%, var(--disney-pink) 100%);
+            background-size: 400% 400%;
+            animation: shine 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reveal-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .reveal-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* Logo Disney */
+        .disney-logo {
+            max-width: 300px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .disney-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+        }
+
+        .reveal-title {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin-bottom: 2rem;
+            color: white;
+            text-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1.2s ease;
+        }
+
+        /* Château */
+        .disney-visual {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .castle-wrapper {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .castle-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 15px white;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        /* Mickey */
+        .mickey-overlay {
+            max-width: 150px;
+            margin: -40px auto 2rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+        }
+
+        .mickey-overlay img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Message révélation */
+        .reveal-message {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 2rem 1.5rem;
+            margin: 2rem auto;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
+            line-height: 1.8;
+            animation: fadeInUp 1.8s ease;
+        }
+
+        .reveal-message strong {
+            color: var(--disney-gold);
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hearts {
+            font-size: 2.5rem;
+            margin: 1.5rem 0;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .final-note {
+            margin-top: 1.5rem;
+            font-size: clamp(1rem, 3.5vw, 1.1rem);
+            font-style: italic;
+            opacity: 0.95;
+            animation: fadeInUp 2s ease;
+        }
+
+        /* ============ CONFETTI ============ */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            z-index: 9999;
+            animation: confetti-fall 4s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ============ PROGRESS BAR ============ */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--romantic-pink), var(--romantic-gold));
+            width: 0%;
+            transition: width 0.5s ease;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(228, 0, 124, 0.6);
+        }
+
+        /* ============ SCROLL INDICATOR ============ */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float 2s ease-in-out infinite;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            margin-left: -3px;
+            background: white;
+            border-radius: 100%;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        /* ============ SECTION VISIBILITY ============ */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: flex;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hero section active" id="heroSection">
+        <div class="hero-content">
+            <h1>Mission Miel pour Honey</h1>
+            <div class="emoji-float">🍯</div>
+            <p class="hero-subtitle">
+                Quelqu'un que j'aime très fort a une immense envie de miel et d'aventure…<br>
+                Une quête spéciale l'attend, remplie de moments aussi doux que le miel.
+            </p>
+
+            <button class="btn btn-primary" onclick="goToSection('enigmeSection')">
+                Suivre la piste du miel ✨
+            </button>
+        </div>
+        <div class="scroll-indicator" onclick="goToSection('enigmeSection')">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- ============ ÉNIGME SECTION ============ -->
+    <section class="enigme-section section" id="enigmeSection">
+        <div class="container">
+            <div class="email-card">
+                <div class="email-header">
+                    <h2>L'Indice Caché</h2>
+                    <p>Tu te souviens de ce message ? Il cache quelque chose...</p>
+                </div>
+
+                <div class="email-box">
+                    <p><strong>Coucou Kelyne,</strong></p>
+                    <p>J'ai bien relu ton CV, c'est vraiment du bon boulot. Voici mes quelques remarques :</p>
+                    <p><span class="highlight">S</span>urtout, garde bien cette présentation, elle est très pro et très lisible.</p>
+                    <p><span class="highlight">I</span>l faut que tu saches que ton expérience en stage ressort vraiment bien.</p>
+                    <p><span class="highlight">D</span>'ailleurs, j'ai vérifié les dates et tout semble parfaitement cohérent.</p>
+                    <p><span class="highlight">N</span>'hésite pas à l'envoyer dès demain matin pour le poste en néonat.</p>
+                    <p><span class="highlight">E</span>n l'état, je pense que tu as toutes tes chances pour décrocher l'entretien.</p>
+                    <p><span class="highlight">Y</span> a pas de doute, ton profil correspond pile à ce qu'ils recherchent.</p>
+                    <p style="margin-top: 1rem;">Tiens-moi au courant dès que tu as un retour !</p>
+                    <em>Je t'embrasse,</em>
+                </div>
+
+                <div class="password-container">
+                    <h3>Saisis le mot de passe 🎁</h3>
+                    <div class="input-wrapper">
+                        <input type="text" id="passwordInput" placeholder="Mot de passe..." autocomplete="off">
+                    </div>
+                    <button class="btn btn-primary" onclick="checkPassword()">
+                        Révéler mon Cadeau 🎉
+                    </button>
+                    <button class="btn btn-secondary" onclick="showHint()">
+                        Besoin d'un indice ? 💡
+                    </button>
+                    <div class="hint-box" id="hintBox">
+                        💡 La magie commence par les <strong>premières lettres</strong> de chaque phrase en surbrillance...
+                    </div>
+                    <p class="error-message" id="errorMsg">❌ Pas encore... Regarde bien les indices !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ REVEAL SECTION ============ -->
+    <section class="reveal-section section" id="revealSection">
+        <div class="container reveal-container">
+            <!-- Logo Disneyland Paris - NOM SIMPLIFIÉ -->
+            <div class="disney-logo">
+                <img src="logo-disney.jpg" 
+                     alt="Disneyland Paris"
+                     onerror="this.style.display='none'">
+            </div>
+
+            <h1 class="reveal-title">Destination : La Magie ! ✨</h1>
+
+            <!-- Château Disney -->
+            <div class="disney-visual">
+                <div class="castle-wrapper">
+                    <img src="Blog-animation-3D-waltstudio.jpg" 
+                         alt="Château Disney"
+                         onerror="this.parentElement.style.display='none'">
+                    <div class="sparkles" id="sparklesContainer"></div>
+                </div>
+            </div>
+
+            <!-- Mickey -->
+            <div class="mickey-overlay">
+                <img src="Mickey-mouse-cartoon-on-transparent-background-PNG.jpg" 
+                     alt="Mickey"
+                     onerror="this.style.display='none'">
+            </div>
+
+            <!-- Message révélation -->
+            <div class="reveal-message">
+                <p>Tu te souviens quand tu m'as dit<br>
+                <strong>"Un jour tu m'emmèneras à Disney ?"</strong></p>
+                <p style="margin-top: 1.5rem;">Et bien ce jour arrive ! 🎉</p>
+                <p style="margin-top: 1.5rem;">
+                    Je t'offre <strong>deux billets pour Disneyland Paris</strong><br>
+                    pour qu'on vive cette magie ensemble.
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    Les vrais billets t'attendent le <strong>13 février</strong> 💝<br>
+                    Les dates sont libres, on choisira notre aventure ensemble !
+                </p>
+            </div>
+
+            <div class="hearts">💖 💕 💖</div>
+            <p class="final-note">Prépare-toi à vivre un moment magique, mon Honey ! 🐻✨</p>
+        </div>
+    </section>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function goToSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            currentStep++;
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function showHint() {
+            document.getElementById('hintBox').classList.add('show');
+        }
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value.trim().toUpperCase();
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (input === 'DISNEY') {
+                goToSection('revealSection');
+                setTimeout(createConfetti, 300);
+                setTimeout(createSparkles, 500);
+            } else {
+                errorMsg.classList.add('show');
+                setTimeout(() => {
+                    errorMsg.classList.remove('show');
+                }, 2000);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('passwordInput');
+            if (input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkPassword();
+                    }
+                });
+            }
+        });
+
+        function createConfetti() {
+            const colors = ['#0060A8', '#E4007C', '#FFB81C', '#6D2077', '#00A4E4', '#FFD700'];
+            const confettiCount = 150;
+
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 20);
+            }
+        }
+
+        function createSparkles() {
+            const container = document.getElementById('sparklesContainer');
+            const sparkleCount = 30;
+
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                sparkle.style.animationDuration = (Math.random() * 1.5 + 1.5) + 's';
+                container.appendChild(sparkle);
+            }
+        }
+
+        updateProgress();
+    </script>
+</body>
+</html>
